@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.18);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.32);
+}
+
+:root {
+  --site-max-width: 1440px;
+  --navbar-color: #061B61;
+  --surface-color: #F6F8FB;
+}
+
+@layer utilities {
+  /* Keep the existing utility names while controlling the site width centrally. */
+  .max-w-\[1280px\] {
+    max-width: var(--site-max-width);
+  }
+
+  /* Soften legacy white panels without affecting white text or icons. */
+  .bg-white {
+    background-color: var(--surface-color);
+  }
+
+  .bg-navy {
+    background-color: var(--navbar-color);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--navbar-color);
+  }
+
+  body {
+    background-color: var(--navbar-color);
+  }
+
+  .footer-email-input:-webkit-autofill,
+  .footer-email-input:-webkit-autofill:hover,
+  .footer-email-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+    -webkit-background-clip: text;
+    -webkit-box-shadow: none;
+    background-color: transparent !important;
+    caret-color: #ffffff;
+  }
+}
