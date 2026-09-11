@@ -9,9 +9,9 @@ const services = [
   { number: "04", Icon: Route, title: "Conseil & Transformation numérique", text: "Une vision claire pour faire évoluer vos outils, vos processus et votre manière de travailler.", points: ["Schéma directeur", "Choix de solutions", "Accompagnement"] },
 ];
 
-export default function Services({ preview = false, page = false }) {
+export default function Services({ page = false }) {
   return (
-    <section id={preview ? "expertises" : "services"} className={`scroll-mt-20 px-6 py-28 max-sm:px-[18px] max-sm:py-[78px] ${page ? "bg-white" : "bg-page"}`}>
+    <section id="services" className={`scroll-mt-20 px-6 py-28 max-sm:px-[18px] max-sm:py-[78px] ${page ? "bg-white" : "bg-page"}`}>
       <div className="mx-auto w-full max-w-[1280px]">
         <div className="flex items-end justify-between gap-8 max-md:flex-col max-md:items-start">
           <div>
@@ -19,7 +19,6 @@ export default function Services({ preview = false, page = false }) {
             <h2 className="max-w-[760px] font-display text-[clamp(2.9rem,5vw,5.1rem)] font-semibold leading-[.9] tracking-[-.045em] text-dark">Un socle IT solide pour <em className="not-italic text-primary">avancer.</em></h2>
             <p className="mt-5 max-w-[610px] text-base leading-[1.8] text-muted">Des services concrets pour garder le contrôle de votre technologie, de vos données et de vos priorités.</p>
           </div>
-          {preview ? <Link className="inline-flex items-center gap-2 whitespace-nowrap text-sm font-bold text-primary transition hover:gap-3 hover:text-primary-hover" to="/services">Voir toutes nos expertises <ArrowUpRight size={17} /></Link> : null}
         </div>
 
         <div className="mt-14 grid grid-cols-2 gap-5 max-md:grid-cols-1">

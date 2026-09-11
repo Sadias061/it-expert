@@ -24,14 +24,31 @@ function ScrollManager() {
 }
 
 export default function SiteLayout({ children }) {
+  const { pathname } = useLocation();
+  const normalizedPathname = pathname.replace(/\/+$/, "") || "/";
+  const hasSiteChrome = [
+    "/",
+    "/services",
+    "/partenaires",
+    "/a-propos",
+    "/blog",
+    "/carrieres",
+    "/contact",
+    "/mentions-legales",
+  ].includes(normalizedPathname);
+
   return (
     <div className="min-h-screen overflow-x-hidden">
       <ScrollManager />
-      <Navbar />
+      {hasSiteChrome ? <Navbar /> : null}
       <main>{children}</main>
-      <Footer />
-      <WhatsAppButton />
-      <BackToTopButton />
+      {hasSiteChrome ? (
+        <>
+          <Footer />
+          <WhatsAppButton />
+          <BackToTopButton />
+        </>
+      ) : null}
     </div>
   );
 }

@@ -15,7 +15,7 @@ export default function ContactPage() {
 
       <section className="bg-page px-6 pb-28 max-sm:px-3 max-sm:pb-[78px]">
         <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1fr)_minmax(320px,.68fr)] items-stretch gap-16 max-lg:grid-cols-1 max-lg:gap-10 max-sm:gap-6">
-          <Contact form />
+          <Contact />
           <ContactDetails />
         </div>
       </section>

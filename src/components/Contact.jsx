@@ -1,14 +1,11 @@
 import {
-  ArrowRight,
   Check,
   ChevronDown,
-  CircleAlert,
   Facebook,
   Instagram,
   Linkedin,
   LoaderCircle,
   Mail,
-  MapPin,
   Phone,
   SendHorizontal,
   X,
@@ -16,7 +13,7 @@ import {
   Loader,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import Toast from "./Toast";
 
 const fieldClass =
   "w-full rounded-xl border border-border bg-surface px-4 py-3.5 text-sm font-normal text-text outline-none transition placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/10";
@@ -39,7 +36,7 @@ const subjectOptions = [
   "Autre",
 ];
 
-export default function Contact({ preview = false, form = false }) {
+export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState({ visible: false, message: "" });
   const [subjectOpen, setSubjectOpen] = useState(false);
@@ -142,29 +139,13 @@ export default function Contact({ preview = false, form = false }) {
     }, 1400);
   };
 
-  if (form) {
-    return (
+  return (
       <>
-        {toast.visible ? (
-          <div className="fixed right-6 top-6 z-50 flex w-[min(360px,calc(100vw-2rem))] items-start gap-3 rounded-2xl border border-border bg-white/95 p-3 shadow-[0_18px_40px_rgba(15,23,42,0.12)] backdrop-blur-sm">
-            <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100 text-orange-500">
-              <CircleAlert size={17} />
-            </div>
-            <div className="min-w-0 flex-1 pt-0.5">
-              <p className="text-sm font-medium leading-5 text-dark">
-                {toast.message}
-              </p>
-            </div>
-            <button
-              type="button"
-              aria-label="Fermer le message"
-              className="ml-1 mt-0.5 text-lg leading-none text-text/60 transition hover:text-text"
-              onClick={() => setToast({ visible: false, message: "" })}
-            >
-              <X size={18} />
-            </button>
-          </div>
-        ) : null}
+        <Toast
+          visible={toast.visible}
+          message={toast.message}
+          onClose={() => setToast({ visible: false, message: "" })}
+        />
 
         <div className="h-full">
           <form
@@ -353,81 +334,6 @@ export default function Contact({ preview = false, form = false }) {
         </div>
       </>
     );
-  }
-
-  return (
-    <section
-      id="contact"
-      className={`scroll-mt-20 bg-page px-6 py-[92px] max-sm:px-[18px] max-sm:py-[78px] ${preview ? "" : ""}`}
-    >
-      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[1fr_.7fr] gap-20 rounded-[26px] bg-footer-blue p-14 text-white shadow-architecture max-lg:grid-cols-1 max-lg:gap-9 max-sm:p-8">
-        <div>
-          <p className="mb-4 text-xs font-bold uppercase tracking-[.15em] text-accent">
-            Contact
-          </p>
-          <h2 className="max-w-[650px] font-display text-[clamp(2.7rem,5vw,4.6rem)] font-semibold leading-[.9] tracking-[-.04em]">
-            Votre prochain projet commence par une{" "}
-            <em className="not-italic text-accent">conversation.</em>
-          </h2>
-          <p className="mt-6 max-w-[520px] leading-[1.7] text-white/75">
-            Un besoin de support, un audit de sécurité ou une infrastructure à
-            repenser ? Décrivons ensemble la prochaine étape.
-          </p>
-        </div>
-        <div className="flex flex-col items-start justify-center gap-7 max-sm:items-stretch">
-          <Link
-            className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-secondary px-5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-secondary-hover"
-            to="/contact"
-          >
-            Prendre rendez-vous{" "}
-            <ArrowRight
-              size={18}
-              className="transition-transform duration-200 group-hover:translate-x-1"
-            />
-          </Link>
-          <div className="flex flex-col gap-4 text-xs text-white/80">
-            <div>
-              <p className="mb-1 text-[.68rem] font-bold uppercase tracking-[.12em] text-accent">
-                E-mail support
-              </p>
-              <a
-                className="inline-flex items-center gap-2 transition hover:text-accent"
-                href="mailto:support@itexpertsafrica.com"
-              >
-                <Mail size={16} className="text-accent" />
-                support@itexpertsafrica.com
-              </a>
-            </div>
-            <div>
-              <p className="mb-1 text-[.68rem] font-bold uppercase tracking-[.12em] text-accent">
-                E-mail commercial
-              </p>
-              <a
-                className="inline-flex items-center gap-2 transition hover:text-accent"
-                href="mailto:sales@itexpertsafrica.com"
-              >
-                <Mail size={16} className="text-accent" />
-                sales@itexpertsafrica.com
-              </a>
-            </div>
-            <div>
-              <p className="mb-1 text-[.68rem] font-bold uppercase tracking-[.12em] text-accent">
-                Heures d'ouverture
-              </p>
-              <p className="m-0 max-w-[290px] leading-[1.65] text-white/80">
-                Lundi au vendredi : 08h00 - 18h00
-                <br />
-                Support d'urgence 24/7 pour les clients sous contrat.
-              </p>
-            </div>
-            <span className="inline-flex items-center gap-2">
-              <MapPin size={16} className="text-accent" /> Cotonou, Bénin
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
 }
 
 export function ContactDetails() {

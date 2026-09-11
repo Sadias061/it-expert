@@ -10,8 +10,10 @@ import {
   Send,
   Youtube,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/imgs/logo.webp";
+import Toast from "./Toast";
 
 const socialLinks = [
   [Facebook, "Facebook"],
@@ -21,7 +23,21 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const [subscribed, setSubscribed] = useState(false);
+  const [email, setEmail] = useState("");
+  const [toastKey, setToastKey] = useState(0);
+
+  useEffect(() => {
+    if (!toastKey) return undefined;
+
+    const timeoutId = window.setTimeout(() => setToastKey(0), 5000);
+    return () => window.clearTimeout(timeoutId);
+  }, [toastKey]);
+
+  const handleSubscription = (event) => {
+    event.preventDefault();
+    setEmail("");
+    setToastKey((currentKey) => currentKey + 1);
+  };
 
   return (
     <footer className="relative overflow-hidden bg-footer-blue text-white/80">
@@ -33,10 +49,14 @@ export default function Footer() {
             Parlons <span className="text-orange">IT</span> ensemble.
           </h2>
           <Link
-            className="group inline-flex items-center gap-2 rounded-full bg-secondary px-[27px] py-4 text-sm font-bold text-white transition hover:bg-secondary-hover"
+            className="group inline-flex items-center gap-2 rounded-2xl bg-secondary px-6 py-3 text-sm font-bold text-white transition hover:bg-secondary-hover"
             to="/contact"
           >
-            Nous contacter <MoveRight size={17} className="transition-transform duration-200 group-hover:translate-x-1" />
+            Nous contacter{" "}
+            <MoveRight
+              size={17}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
           </Link>
         </div>
 
@@ -44,14 +64,8 @@ export default function Footer() {
 
         <div className="grid grid-cols-[1.35fr_.72fr_.98fr_1.35fr] gap-[50px] max-lg:grid-cols-2 max-lg:gap-x-8 max-lg:gap-y-[42px] max-sm:grid-cols-2 max-sm:gap-x-5 max-sm:gap-y-[38px]">
           <div className="max-w-[300px] max-lg:col-span-2 max-sm:col-span-full">
-            <Link
-              className="inline-flex items-center gap-2.5 text-2xl font-bold tracking-tight"
-              to="/"
-            >
-              <span>
-                Service <span className="text-orange">IT</span>
-                <b className="text-orange">.</b>
-              </span>
+            <Link className="inline-flex items-center" to="/">
+              <img className="h-16 w-auto" src={logo} alt="IT Experts Africa" />
             </Link>
             <p className="mt-[23px] text-sm leading-[1.7] text-white/70">
               Votre partenaire pour une informatique plus fiable, plus sûre et
@@ -83,7 +97,7 @@ export default function Footer() {
             >
               À propos
             </Link>
-             <Link
+            <Link
               className="text-sm text-white/75 hover:text-orange"
               to="/services"
             >
@@ -113,15 +127,16 @@ export default function Footer() {
             <h3 className="mb-2.5 text-lg font-bold text-white">Contact</h3>
             <a
               className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-orange"
-              href="tel:+22900000000"
+              href="tel: +229 01 42 30 04 71"
             >
-              <Phone size={16} className="text-orange" /> +229 00 00 00 00
+              <Phone size={16} className="text-orange" />  +229 01 42 30 04 71
             </a>
             <a
               className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-orange"
               href="mailto:support@itexpertsafrica.com"
             >
-              <Mail size={16} className="text-orange" /> support@itexpertsafrica.com
+              <Mail size={16} className="text-orange" />{" "}
+              support@itexpertsafrica.com
             </a>
             <span className="inline-flex items-center gap-2 text-sm text-white/75">
               <MapPin size={16} className="text-orange" /> Cotonou, Bénin
@@ -138,10 +153,7 @@ export default function Footer() {
             </p>
             <form
               className="flex h-[47px] w-full max-w-[320px] rounded-full bg-blue-400/30 pl-4"
-              onSubmit={(event) => {
-                event.preventDefault();
-                setSubscribed(true);
-              }}
+              onSubmit={handleSubscription}
             >
               <input
                 className="footer-email-input min-w-0 flex-1 border-0 bg-transparent text-sm text-white outline-none placeholder:text-white/75"
@@ -150,6 +162,8 @@ export default function Footer() {
                 autoComplete="email"
                 placeholder="Votre adresse email"
                 aria-label="Votre adresse email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
               />
               <button
                 className="grid h-[47px] w-12 shrink-0 place-items-center rounded-full border-0 bg-secondary text-white hover:bg-secondary-hover"
@@ -159,25 +173,25 @@ export default function Footer() {
                 <Send size={18} />
               </button>
             </form>
-            {subscribed ? (
-              <small className="mt-3 block text-xs text-cyan">
-                Merci, votre inscription est prise en compte.
-              </small>
-            ) : null}
           </div>
         </div>
       </div>
+
+      <Toast
+        visible={Boolean(toastKey)}
+        message="Merci, votre inscription est prise en compte."
+        onClose={() => setToastKey(0)}
+      />
 
       <div className="absolute inset-x-0 bottom-[72px] h-[13px] opacity-60 [background:repeating-linear-gradient(130deg,transparent_0_11px,rgba(113,160,255,.38)_11px_13px,transparent_13px_23px)] max-sm:bottom-[105px]" />
       <div className="bg-orange text-white">
         <div className="mx-auto flex w-[calc(100%-48px)] max-w-[1280px] items-center justify-between gap-6 px-6 py-[19px] text-sm max-sm:w-full max-sm:flex-col max-sm:items-start max-sm:px-[18px] max-sm:py-[17px] max-sm:text-xs">
           <span>
-            © {new Date().getFullYear()} IT Experts Africa. Tous droits réservés.
+            © {new Date().getFullYear()} IT Experts Africa. Tous droits
+            réservés.
           </span>
           <span className="flex items-center gap-2">
-            <a href="#" onClick={(event) => event.preventDefault()}>
-              Conditions d’utilisation
-            </a>
+            <Link to="/mentions-legales">Mentions légales</Link>
             <i className="h-[15px] w-px bg-white/75" />
             <a href="#" onClick={(event) => event.preventDefault()}>
               Politique de confidentialité

@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, MoveRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, Layers, MoveRight, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import dataProcessing from "../assets/imgs/data-processing.svg";
@@ -22,11 +22,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65 }}
         >
-          <h1 className="max-w-[760px] font-display text-[clamp(3.8rem,7vw,7rem)] font-semibold leading-[.86] tracking-[-.065em] text-navy max-sm:max-w-[340px] max-sm:text-[clamp(3rem,13vw,4.5rem)] max-sm:leading-[.9]">
+          <h1 className="max-w-[760px] font-display text-[clamp(3.8rem,7vw,7rem)] italic font-semibold leading-[.86] tracking-[-.065em] text-navy max-sm:max-w-[340px] max-sm:text-[clamp(3rem,13vw,4.5rem)] max-sm:leading-[.9]">
             Une informatique plus{" "}
-            <em className="not-italic text-secondary">sûre.</em>
-            <br />
-            Plus <em className="not-italic text-primary">sereine.</em>
+            <em className="italic text-secondary">sûre, </em>
+            plus <em className="italic text-primary">sereine.</em>
           </h1>
           <p className="mt-7 max-w-[570px] text-base leading-[1.8] text-muted">
             Nous sécurisons, structurons et faisons évoluer votre environnement
@@ -44,10 +43,11 @@ export default function Hero() {
               />
             </Link>
             <Link
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-primary/20 px-6 text-sm font-bold text-primary transition hover:border-primary hover:bg-soft"
+              className="inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl border border-primary/20 px-6 text-sm font-bold text-primary transition hover:border-primary hover:bg-soft"
               to="/services"
             >
               Découvrir nos services
+              <Layers size={18} className="animate-bounce" />
             </Link>
           </div>
         </motion.div>
@@ -123,20 +123,6 @@ export default function Hero() {
             alt="Illustration d'une infrastructure informatique et de données"
           />
         </motion.div>
-      </div>
-
-      <div className="relative mx-auto mt-20 grid w-full max-w-[1280px] grid-cols-3 border-t border-line pt-6 max-md:mt-14 max-md:grid-cols-1 max-md:gap-0 max-md:divide-y max-md:divide-line max-md:pt-0">
-        {heroFacts.map(([Icon, label]) => (
-          <div
-            className="flex items-center gap-3 border-r border-line px-6 py-4 text-left first:pl-0 last:border-0 last:pr-0 max-md:border-0 max-md:px-0 max-md:py-3.5 max-md:first:pt-0 max-md:last:pb-0"
-            key={label}
-          >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-soft">
-              <Icon size={18} className="text-primary" />
-            </span>
-            <span className="text-sm font-medium text-muted">{label}</span>
-          </div>
-        ))}
       </div>
     </section>
   );
