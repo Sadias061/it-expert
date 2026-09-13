@@ -25,6 +25,14 @@ export default function Navbar() {
 
   useEffect(() => setMobileOpen(false), [location.pathname, location.hash]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const closeMobileMenu = () => setMobileOpen(false);
+    window.addEventListener("scroll", closeMobileMenu, { passive: true });
+    return () => window.removeEventListener("scroll", closeMobileMenu);
+  }, [mobileOpen]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 overflow-visible border-b border-white/10 bg-footer-blue pt-[env(safe-area-inset-top)] text-white shadow-[0_3px_10px_rgba(6,27,97,0.16)] transition-shadow ${scrolled ? "shadow-[0_14px_35px_rgba(6,27,97,0.3)]" : ""}`}
