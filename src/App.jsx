@@ -8,6 +8,7 @@ import PartnersPage from "./pages/PartnersPage";
 import ServicesPage from "./pages/ServicesPage";
 import Index from "./pages/Index";
 import LegalNoticePage from "./pages/LegalNoticePage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -23,6 +24,10 @@ export default function App() {
           <Route path="/carrieres" element={<CareersPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/mentions-legales" element={<LegalNoticePage />} />
+          <Route
+            path="/politique-de-confidentialite"
+            element={<PrivacyPolicyPage />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </SiteLayout>

@@ -3,6 +3,7 @@ import {
   Facebook,
   Instagram,
   Linkedin,
+  Loader,
   Mail,
   MapPin,
   MoveRight,
@@ -24,6 +25,7 @@ const socialLinks = [
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
   const [toastKey, setToastKey] = useState(0);
 
   useEffect(() => {
@@ -35,8 +37,16 @@ export default function Footer() {
 
   const handleSubscription = (event) => {
     event.preventDefault();
-    setEmail("");
-    setToastKey((currentKey) => currentKey + 1);
+    if (isSubscribing) return;
+
+    setIsSubscribing(true);
+    setToastKey(0);
+
+    window.setTimeout(() => {
+      setEmail("");
+      setIsSubscribing(false);
+      setToastKey((currentKey) => currentKey + 1);
+    }, 1400);
   };
 
   return (
@@ -62,7 +72,7 @@ export default function Footer() {
 
         <div className="my-[52px] h-px bg-white/20 max-sm:my-[38px]" />
 
-        <div className="grid grid-cols-[1.35fr_.72fr_.98fr_1.35fr] gap-[50px] max-lg:grid-cols-2 max-lg:gap-x-8 max-lg:gap-y-[42px] max-sm:grid-cols-2 max-sm:gap-x-5 max-sm:gap-y-[38px]">
+        <div className="grid grid-cols-[1.35fr_.72fr_.98fr_1.35fr] gap-[50px] max-lg:grid-cols-2 max-lg:gap-x-8 max-lg:gap-y-[42px] max-sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] max-sm:gap-x-5 max-sm:gap-y-[38px]">
           <div className="max-w-[300px] max-lg:col-span-2 max-sm:col-span-full">
             <Link className="inline-flex items-center" to="/">
               <img className="h-16 w-auto" src={logo} alt="IT Experts Africa" />
@@ -86,7 +96,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-start gap-3.5">
+          <div className="flex min-w-0 flex-col items-start gap-3.5">
             <h3 className="mb-2.5 text-lg font-bold text-white">Navigation</h3>
             <Link className="text-sm text-white/75 hover:text-orange" to="/">
               Accueil
@@ -123,24 +133,33 @@ export default function Footer() {
             </Link>
           </div>
 
-          <div className="flex flex-col items-start gap-3.5">
+          <div className="flex min-w-0 flex-col items-start gap-3.5">
             <h3 className="mb-2.5 text-lg font-bold text-white">Contact</h3>
             <a
-              className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-orange"
+              className="inline-flex min-w-0 items-start gap-2 text-sm text-white/75 hover:text-orange"
               href="tel: +229 01 42 30 04 71"
             >
-              <Phone size={16} className="text-orange" />  +229 01 42 30 04 71
+              <Phone size={16} className="mt-0.5 shrink-0 text-orange" />
+              <span>+229 0142300471</span>
             </a>
             <a
-              className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-orange"
+              className="inline-flex min-w-0 items-start gap-2 text-sm text-white/75 hover:text-orange"
               href="mailto:support@itexpertsafrica.com"
             >
-              <Mail size={16} className="text-orange" />{" "}
-              support@itexpertsafrica.com
+              <Mail size={16} className="mt-0.5 shrink-0 text-orange" />
+              <span className="min-w-0 break-all">
+                support@itexpertsafrica.com
+              </span>
             </a>
-            <span className="inline-flex items-center gap-2 text-sm text-white/75">
-              <MapPin size={16} className="text-orange" /> Cotonou, Bénin
-            </span>
+            <a
+              className="inline-flex min-w-0 items-start gap-2 text-sm text-white/75 hover:text-orange"
+              href="https://www.google.com/maps/search/?api=1&query=Cotonou%2C%20Benin"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MapPin size={16} className="mt-0.5 shrink-0 text-orange" />
+              <span>Cotonou, Bénin</span>
+            </a>
           </div>
 
           <div className="max-sm:col-span-full">
@@ -166,11 +185,16 @@ export default function Footer() {
                 onChange={(event) => setEmail(event.target.value)}
               />
               <button
-                className="grid h-[47px] w-12 shrink-0 place-items-center rounded-full border-0 bg-secondary text-white hover:bg-secondary-hover"
+                className="grid h-[47px] w-12 shrink-0 place-items-center rounded-full border-0 bg-secondary text-white transition hover:bg-secondary-hover disabled:cursor-not-allowed disabled:opacity-80"
                 type="submit"
-                aria-label="S'inscrire"
+                disabled={isSubscribing}
+                aria-label={isSubscribing ? "Inscription en cours" : "S'inscrire"}
               >
-                <Send size={18} />
+                {isSubscribing ? (
+                  <Loader size={18} className="animate-spin" aria-label="Chargement" />
+                ) : (
+                  <Send size={18} />
+                )}
               </button>
             </form>
           </div>
@@ -186,16 +210,16 @@ export default function Footer() {
       <div className="absolute inset-x-0 bottom-[72px] h-[13px] opacity-60 [background:repeating-linear-gradient(130deg,transparent_0_11px,rgba(113,160,255,.38)_11px_13px,transparent_13px_23px)] max-sm:bottom-[105px]" />
       <div className="bg-orange text-white">
         <div className="mx-auto flex w-[calc(100%-48px)] max-w-[1280px] items-center justify-between gap-6 px-6 py-[19px] text-sm max-sm:w-full max-sm:flex-col max-sm:items-start max-sm:px-[18px] max-sm:py-[17px] max-sm:text-xs">
-          <span>
+          <span className="max-sm:min-w-0 max-sm:leading-relaxed">
             © {new Date().getFullYear()} IT Experts Africa. Tous droits
             réservés.
           </span>
-          <span className="flex items-center gap-2">
+          <span className="flex flex-wrap items-center gap-x-2 gap-y-1 max-sm:leading-relaxed">
             <Link to="/mentions-legales">Mentions légales</Link>
             <i className="h-[15px] w-px bg-white/75" />
-            <a href="#" onClick={(event) => event.preventDefault()}>
+            <Link to="/politique-de-confidentialite">
               Politique de confidentialité
-            </a>
+            </Link>
           </span>
         </div>
       </div>

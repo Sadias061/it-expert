@@ -1,7 +1,37 @@
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import Services from "../components/Services";
+import puzzleSolved from "../assets/imgs/puzzle-solved.svg";
+import { ServiceRoadmap } from "../components/Services";
 
 export default function ServicesPage() {
-  return <><section className="relative overflow-hidden bg-navy px-6 pb-[100px] pt-[180px] text-white max-sm:px-[18px] max-sm:pb-[82px] max-sm:pt-[150px] after:absolute after:-bottom-[300px] after:-right-[100px] after:h-[610px] after:w-[610px] after:rounded-full after:border after:border-cyan/25 after:content-['']"><div className="relative z-10 mx-auto w-full max-w-[1280px]"><p className="mb-4 text-xs font-bold uppercase tracking-[.15em] text-cyan">Nos expertises</p><h1 className="max-w-[800px] font-display text-[clamp(3.7rem,7vw,6.3rem)] font-semibold leading-[.88] tracking-[-.06em] text-white max-sm:text-[clamp(3.35rem,16vw,5rem)]">Des services IT qui <em className="not-italic text-cyan">sécurisent</em> votre activité.</h1><p className="mt-7 max-w-[640px] leading-[1.8] text-white/70">Nous prenons en charge les sujets techniques qui demandent de la méthode, de la vigilance et une vraie compréhension de votre métier.</p></div></section><Services page /><section className="bg-soft"><div className="mx-auto flex w-full max-w-[1280px] items-center justify-between gap-9 px-6 py-[72px] max-sm:flex-col max-sm:items-start max-sm:px-[18px] max-sm:py-[60px]"><h2 className="m-0 font-display text-5xl font-semibold tracking-[-.04em] text-navy max-sm:text-[2.5rem]">Besoin d’un accompagnement sur mesure ?</h2><Link className="inline-flex min-h-12 items-center justify-center gap-2 rounded border border-transparent bg-primary px-5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-primary-dark" to="/contact">Parlons de votre besoin <ArrowRight size={18} /></Link></div></section></>;
+  return (
+    <>
+      <section className="overflow-hidden bg-navy px-6 pb-[100px] pt-[180px] text-white max-sm:px-[18px] max-sm:pb-[42px] max-sm:pt-[150px]">
+        <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-[minmax(0,1.05fr)_minmax(340px,.75fr)] items-center gap-10 max-lg:grid-cols-1 max-lg:gap-12">
+          <div>
+            <p className="mb-4 text-xs font-bold italic uppercase tracking-[.15em] text-cyan">
+              Nos expertises
+            </p>
+            <h1 className="max-w-[900px] font-display text-[clamp(3.7rem,7vw,6.3rem)] font-semibold italic leading-[.88] tracking-[-.06em] text-white max-sm:text-[clamp(3.35rem,16vw,5rem)]">
+              Des solutions IT globales pour propulser votre{" "}
+              <em className="italic text-cyan">entreprise.</em>
+            </h1>
+            <p className="mt-7 max-w-[650px] leading-[1.8] text-white/70">
+              De la gestion quotidienne de votre parc informatique à la
+              sécurisation de vos données stratégiques, découvrez nos domaines
+              d'expertise.
+            </p>
+          </div>
+          <div className="mx-auto w-full max-w-[470px] max-lg:max-w-[400px]">
+            <img
+              className="h-auto w-full drop-shadow-[0_24px_35px_rgba(0,0,0,.22)]"
+              src={puzzleSolved}
+              alt="Illustration d'un puzzle assemblé"
+            />
+          </div>
+        </div>
+      </section>
+
+      <ServiceRoadmap />
+
+    </>
+  );
 }

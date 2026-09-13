@@ -48,6 +48,7 @@
 
   body {
     background-color: var(--navbar-color);
+    font-family: "DM Sans", sans-serif;
   }
 
   .footer-email-input:-webkit-autofill,

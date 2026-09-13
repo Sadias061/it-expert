@@ -34,7 +34,6 @@ export default function SiteLayout({ children }) {
     "/blog",
     "/carrieres",
     "/contact",
-    "/mentions-legales",
   ].includes(normalizedPathname);
 
   return (
