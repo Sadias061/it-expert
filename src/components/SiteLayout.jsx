@@ -31,10 +31,9 @@ export default function SiteLayout({ children }) {
     "/services",
     "/partenaires",
     "/a-propos",
-    "/blog",
-    "/carrieres",
+    "/actualites",
     "/contact",
-  ].includes(normalizedPathname);
+  ].includes(normalizedPathname) || normalizedPathname.startsWith("/actualites/");
 
   return (
     <div className="min-h-screen overflow-x-hidden">

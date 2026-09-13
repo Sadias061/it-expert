@@ -59,7 +59,7 @@ export default function Footer() {
             Parlons <span className="text-orange">IT</span> ensemble.
           </h2>
           <Link
-            className="group inline-flex items-center gap-2 rounded-2xl bg-secondary px-6 py-3 text-sm font-bold text-white transition hover:bg-secondary-hover"
+            className="button-primary group inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-bold transition"
             to="/contact"
           >
             Nous contacter{" "}
@@ -84,7 +84,7 @@ export default function Footer() {
             <div className="mt-6 flex gap-2.5">
               {socialLinks.map(([Icon, label]) => (
                 <a
-                  className="grid h-[38px] w-[38px] place-items-center rounded-full border border-blue-300/25 bg-blue-400/20 text-white transition hover:-translate-y-1 hover:bg-orange hover:text-footer-blue"
+                  className="grid h-[38px] w-[38px] place-items-center rounded-full border border-blue-300/25 bg-blue-400/20 text-white transition hover:-translate-y-1 hover:bg-orange hover:text-white"
                   href="#"
                   key={label}
                   aria-label={label}
@@ -121,15 +121,9 @@ export default function Footer() {
             </Link>
             <Link
               className="text-sm text-white/75 hover:text-orange"
-              to="/blog"
+              to="/actualites"
             >
-              Blog
-            </Link>
-            <Link
-              className="text-sm text-white/75 hover:text-orange"
-              to="/carrieres"
-            >
-              Carrières
+              Actualités
             </Link>
           </div>
 
@@ -185,13 +179,19 @@ export default function Footer() {
                 onChange={(event) => setEmail(event.target.value)}
               />
               <button
-                className="grid h-[47px] w-12 shrink-0 place-items-center rounded-full border-0 bg-secondary text-white transition hover:bg-secondary-hover disabled:cursor-not-allowed disabled:opacity-80"
+                className="button-primary grid h-[47px] w-12 shrink-0 place-items-center rounded-full border-0 transition disabled:cursor-not-allowed disabled:opacity-80"
                 type="submit"
                 disabled={isSubscribing}
-                aria-label={isSubscribing ? "Inscription en cours" : "S'inscrire"}
+                aria-label={
+                  isSubscribing ? "Inscription en cours" : "S'inscrire"
+                }
               >
                 {isSubscribing ? (
-                  <Loader size={18} className="animate-spin" aria-label="Chargement" />
+                  <Loader
+                    size={18}
+                    className="animate-spin"
+                    aria-label="Chargement"
+                  />
                 ) : (
                   <Send size={18} />
                 )}

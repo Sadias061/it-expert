@@ -116,7 +116,7 @@ export function ServiceRoadmap() {
                   key={number}
                 >
                   <article
-                    className={`relative w-[calc(50%-2rem)] rounded-2xl border border-[#ddd8f3] bg-[#eeebff] p-8 shadow-[6px_rgba(57,43,117,0.1)] hover:shadow-[02px_1px_rgba(57,43,117,0.15)] max-md:w-full max-sm:px-6 max-sm:pb-7 ${
+                    className={`relative w-[calc(50%-2rem)] rounded-2xl border border-[#ddd8f3] bg-soft p-8 shadow-[6px_rgba(57,43,117,0.1)] hover:shadow-[02px_1px_rgba(57,43,117,0.15)] max-md:w-full max-sm:px-6 max-sm:pb-7 ${
                       isExpanded ? "min-h-[520px]" : "min-h-[270px]"
                     } max-md:min-h-0`}
                   >

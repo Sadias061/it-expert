@@ -8,8 +8,7 @@ const navItems = [
   ["À propos", "/a-propos"],
   ["Services", "/services"],
   ["Partenaires", "/partenaires"],
-  ["Blog", "/blog"],
-  ["Carrières", "/carrieres"],
+  ["Actualités", "/actualites"],
 ];
 
 export default function Navbar() {
@@ -69,18 +68,18 @@ export default function Navbar() {
             ),
           )}
           <Link
-            className="group mt-3 inline-flex items-center justify-center gap-2 rounded-2xl bg-secondary px-4 py-3 text-sm font-bold text-white transition hover:bg-secondary-hover xl:hidden"
+            className="button-primary group mt-3 inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold transition xl:hidden"
             to="/contact"
           >
-            Demander un audit <MoveRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
+            Audit gratuit <MoveRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </nav>
         <div className="ml-auto flex items-center gap-3">
           <Link
-            className="group hidden items-center justify-center gap-2 rounded-2xl bg-secondary px-4 py-3 text-sm font-bold text-white transition hover:bg-secondary-hover xl:inline-flex"
+            className="button-primary group hidden items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-bold transition xl:inline-flex"
             to="/contact"
           >
-            Demander un audit <MoveRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
+            Audit gratuit <MoveRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
           <button
             className="grid h-10 w-10 shrink-0 place-items-center text-white transition xl:hidden"

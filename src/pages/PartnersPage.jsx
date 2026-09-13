@@ -133,7 +133,7 @@ export default function PartnersPage() {
                   </p>
                   <div className="mt-auto flex items-center justify-between gap-5">
                     <a
-                      className="inline-flex items-center gap-2 rounded-xl bg-secondary px-4 py-2 text-sm text-white font-semibold transition hover:bg-[#FF8A4A]"
+                      className="button-primary inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition"
                       href={link}
                       target="_blank"
                       rel="noreferrer"
@@ -264,7 +264,7 @@ export default function PartnersPage() {
                   </article>
                 ))}
               </div>
-              <div className="mt-12 flex justify-center"><a className="inline-flex items-center justify-center bg-[#3b00ff] px-7 py-3 text-sm font-medium text-white transition hover:bg-[#2500be]" href="https://wcs-veeamdataplatform-itexpertsbeninsarl.swcontentsyndication.com/sw/swchannel/registration/internet/registration.cfm?RegPageID=7170219&traffictype=Direct#form2" target="_blank" rel="noreferrer">Recevoir le rapport sur les tendances</a></div>
+              <div className="mt-12 flex justify-center"><a className="button-primary inline-flex items-center justify-center px-7 py-3 text-sm font-medium transition" href="https://wcs-veeamdataplatform-itexpertsbeninsarl.swcontentsyndication.com/sw/swchannel/registration/internet/registration.cfm?RegPageID=7170219&traffictype=Direct#form2" target="_blank" rel="noreferrer">Recevoir le rapport sur les tendances</a></div>
             </section>
           </div>
           </div>
@@ -284,7 +284,7 @@ export default function PartnersPage() {
             </p>
           </div>
           <Link
-            className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-2 bg-primary rounded-lg px-6 text-sm font-bold text-white transition hover:bg-primary-dark"
+            className="button-primary group inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-lg px-6 text-sm font-bold transition"
             to="/contact"
           >
             Demander un devis

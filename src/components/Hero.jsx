@@ -33,7 +33,7 @@ export default function Hero() {
           </p>
           <div className="mt-9 flex flex-wrap gap-3 max-sm:flex-col">
             <Link
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-secondary px-6 text-sm font-bold text-white transition hover:bg-secondary-hover"
+              className="button-primary group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-6 text-sm font-bold transition"
               to="/contact"
             >
               Demander un audit{" "}
@@ -43,7 +43,7 @@ export default function Hero() {
               />
             </Link>
             <Link
-              className="inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl border border-primary/20 px-6 text-sm font-bold text-primary transition hover:border-primary hover:bg-soft"
+              className="button-secondary inline-flex min-h-12 items-center justify-center gap-3 rounded-2xl px-6 text-sm font-bold transition"
               to="/services"
             >
               Découvrir nos services

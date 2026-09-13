@@ -20,7 +20,7 @@ export default function NotFound() {
           </p>
           <div className="mt-9 flex flex-wrap gap-3 max-lg:justify-center max-sm:flex-col">
             <Link
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-secondary px-6 text-sm font-bold text-white transition hover:bg-secondary-hover"
+              className="button-primary group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-6 text-sm font-bold transition"
               to="/"
             >
               <MoveLeft
@@ -30,7 +30,7 @@ export default function NotFound() {
               Retour à l’accueil
             </Link>
             <Link
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-primary/20 px-6 text-sm font-bold text-primary transition hover:border-primary hover:bg-soft"
+              className="button-secondary group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-6 text-sm font-bold transition"
               to="/contact"
             >
               <Info size={17} className="group-hover:animate-bounce" />

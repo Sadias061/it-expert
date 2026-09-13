@@ -306,7 +306,7 @@ export default function Contact() {
 
             <div className="mt-auto flex items-center justify-end gap-4 max-sm:flex-col max-sm:items-start max-sm:justify-start">
               <button
-                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-secondary px-7 text-sm font-bold text-white transition hover:bg-secondary-hover disabled:cursor-not-allowed disabled:opacity-80 max-sm:w-full"
+                className="button-primary group inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-7 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-80 max-sm:w-full"
                 type="submit"
                 disabled={loading}
               >

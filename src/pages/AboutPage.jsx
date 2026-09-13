@@ -1,6 +1,4 @@
-import { MoveRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
 const statistics = [
   ["10+", "Années d’expérience"],
@@ -267,33 +265,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-soft">
-        <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between gap-9 px-6 py-[72px] max-lg:flex-col max-lg:items-start max-sm:px-[18px] max-sm:py-[60px]">
-          <div>
-            <p className="mb-4 text-xs font-bold uppercase italic tracking-[.15em] text-primary">
-              Rejoignez l'aventure
-            </p>
-            <h2 className="m-0 font-display text-[clamp(2.8rem,5vw,4.8rem)] font-semibold leading-[.95] tracking-[-.04em] text-navy">
-              Vous partagez nos valeurs ?
-            </h2>
-            <p className="mt-4 text-muted">
-              Découvrez nos opportunités de carrière.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-transparent bg-primary px-5 text-sm font-bold text-white transition hover:bg-primary-dark"
-              to="/carrieres"
-            >
-              Voir les carrières
-              <MoveRight
-                size={18}
-                className="transition-transform duration-200 group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
